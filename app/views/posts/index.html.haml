@@ -1,0 +1,27 @@
+%h1 Listing posts
+
+
+%table.mytable{:border=>'2', :width => "40%"}
+  %tr
+    %th.mypub Title
+    %th Body
+    %th Published
+    -#%th
+    -#%th
+    -#%th
+
+  - @posts.each do |post|
+    %tr
+      %td.myclass
+        =post.title
+      %td= post.body
+      %td= post.published
+    %tr
+      %td= link_to 'Show', post
+      %td= link_to 'Edit', edit_post_path(post)
+      %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+.mylink 
+  = link_to 'New Post', new_post_path
